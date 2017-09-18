@@ -8,28 +8,37 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
   @ViewChild('textarea') textarea: ElementRef;
 
-  title = 'app';
   language = 'css';
-  prismhtml = `
-    <b>
-      bold
-    </b>
-  `;
-  _prism = `
-    /*
-      ng-content does not change.
-    */
+  title = 'app';
+
+  example = {
+    css: {
+      language: 'css',
+      code: `
+    /* ng-content does not change.*/
     .item {
       text-align: center;
     }
-  `;
-  set prism(value: string) {
-    this._prism = value;
-  }
-  get prism(): string {
-    return this._prism;
-  }
-
+      `
+    },
+    html: {
+      language: 'html',
+      code:
+    `<!-- ng-content does not change -->
+    <p align="center">
+      HTML example
+    </p>
+      `
+    },
+    interpolation: {
+      language: 'html',
+      code: `
+    <p align="center">
+      Language interpolation: '{{language}}'
+    </p>
+    `
+    }
+  };
 
   constructor() { }
 
@@ -37,8 +46,7 @@ export class AppComponent {
     console.log('callback');
   }
   update($event) {
-    this[$event.srcElement.name] = $event.srcElement.value;
-    console.log(this.prism);
+    this.example[$event.srcElement.name].code = $event.srcElement.value;
   }
   setLanguage($event) {
     this.language = $event.srcElement.value;
