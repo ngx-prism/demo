@@ -14,11 +14,12 @@
   <prism-highlight [language]="language" [code]="example.css.code"></prism-highlight>
 </div>
 <div>
+  <textarea rows="5" cols="50" name="interpolation" (keyup)="update($event)" [innerHTML]="example.interpolation.code"></textarea>
+  <prism-highlight [interpolation]="this" [language]="language" [callback]="callback">{{example.interpolation.code}}</prism-highlight>
+  <prism-highlight [interpolation]="this" [language]="language" [callback]="callback" [code]="example.interpolation.code">/** ng-content */</prism-highlight>
+</div>
+<div>
   <textarea rows="5" cols="50" name="html" (keyup)="update($event)" [innerHTML]="example.html.code"></textarea>
   <prism-highlight [language]="'html'" [callback] = "callback">{{example.html.code}}</prism-highlight>
   <prism-highlight [language]="'html'" [code]="example.html.code"></prism-highlight>
-</div>
-<div>
-  <textarea rows="5" cols="50" name="interpolation" (keyup)="update($event)" [innerHTML]="example.interpolation.code"></textarea>
-  <prism-highlight [interpolation]="true" [language]="example.interpolation.language" [code]="example.interpolation.code">/** ng-content */</prism-highlight>
 </div>
