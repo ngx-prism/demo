@@ -3,23 +3,50 @@
 <h2>
   Component: prism-highlight
 </h2>
+
+<h4>
+  CSS
+</h4>
 <div>
   <p>
-    <input type="radio" name="language" value="css" (change)="setLanguage($event)" [attr.checked] = "language === 'css' ? 'checked' : null" /> CSS
-    <input type="radio" name="language" value="html" (change)="setLanguage($event)" [attr.checked] = "language === 'html' ? 'checked' : null" /> HTML
-    <input type="radio" name="language" value="javascript" (change)="setLanguage($event)" [attr.checked] = "language === 'javascript' ? 'checked' : null" /> JAVASCRIPT
+    <input type="radio" name="css" value="css" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'css' ? 'checked' : null" /> CSS
+    <input type="radio" name="css" value="html" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'html' ? 'checked' : null" /> HTML
+    <input type="radio" name="css" value="javascript" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'javascript' ? 'checked' : null" /> JAVASCRIPT
   </p>
-  <textarea rows="7" cols="50" name="css" (keyup)="update($event)" [innerHTML]="example.css.code"></textarea>
-  <prism-highlight [language]="language">{{example.css.code}}</prism-highlight>
-  <prism-highlight [language]="language" [code]="example.css.code"></prism-highlight>
+  <textarea rows="7" style="width: 100%; " name="css" (keyup)="update($event)" [innerHTML]="example.css.code"></textarea>
+  <prism-highlight [language]="example.css.language" [code]="example.css.code"></prism-highlight>
+  <prism-highlight [language]="example.css.language">{{example.css.code}}</prism-highlight>
 </div>
+<h4>
+  HTML with callback
+</h4>
 <div>
-  <textarea rows="5" cols="50" name="interpolation" (keyup)="update($event)" [innerHTML]="example.interpolation.code"></textarea>
-  <prism-highlight [interpolation]="this" [language]="language" [callback]="callback">{{example.interpolation.code}}</prism-highlight>
-  <prism-highlight [interpolation]="this" [language]="language" [callback]="callback" [code]="example.interpolation.code">/** ng-content */</prism-highlight>
+  <textarea rows="15" style="width: 100%; " name="html" (keyup)="update($event)" [innerHTML]="example.html.code"></textarea>
+  <prism-highlight [language]="'html'" [callback]="callback" [code]="example.html.code"></prism-highlight>
+  <prism-highlight [language]="'html'">{{example.html.code}}</prism-highlight>
 </div>
+
+<!-- Html with interpolation -->
+<h4>
+  HTML with interpolation
+</h4>
 <div>
-  <textarea rows="5" cols="50" name="html" (keyup)="update($event)" [innerHTML]="example.html.code"></textarea>
-  <prism-highlight [language]="'html'" [callback] = "callback">{{example.html.code}}</prism-highlight>
-  <prism-highlight [language]="'html'" [code]="example.html.code"></prism-highlight>
+  <textarea rows="15" style="width: 100%; " name="interpolation" (keyup)="update($event)" [innerHTML]="example.interpolation.code"></textarea>
+  <p>
+    <input type="radio" name="interpolation" value="css" (change)="setLanguage($event)" [attr.checked] = "example.interpolation.language === 'css' ? 'checked' : null" /> CSS
+    <input type="radio" name="interpolation" value="html" (change)="setLanguage($event)" [attr.checked] = "example.interpolation.language === 'html' ? 'checked' : null" /> HTML
+    <input type="radio" name="interpolation" value="javascript" (change)="setLanguage($event)" [attr.checked] = "example.interpolation.language === 'javascript' ? 'checked' : null" /> JAVASCRIPT
+  </p>
+  <prism-highlight [interpolation]="this" [language]="example.interpolation.language" [code]="example.interpolation.code">/** ng-content */</prism-highlight>
+  <prism-highlight [interpolation]="this" [language]="example.interpolation.language">{{example.interpolation.code}}</prism-highlight>
+</div>
+
+<!-- Hooks -->
+<h4>
+  HTML with Hooks
+</h4>
+<div>
+  <textarea rows="15" style="width: 100%; " name="html" (keyup)="update($event)" [innerHTML]="example.html.code"></textarea>
+  <prism-highlight [language]="'html'" [hooks]="hooks" [code]="example.html.code"></prism-highlight>
+  <prism-highlight [language]="'html'">{{example.html.code}}</prism-highlight>
 </div>
