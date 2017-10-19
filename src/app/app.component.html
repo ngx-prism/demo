@@ -8,12 +8,15 @@
 </h4>
 <div>
   <p>
-    <input type="radio" name="css" value="css" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'css' ? 'checked' : null" /> CSS
-    <input type="radio" name="css" value="html" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'html' ? 'checked' : null" /> HTML
-    <input type="radio" name="css" value="javascript" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'javascript' ? 'checked' : null" /> JAVASCRIPT
+    <input type="radio" name="css" value="css" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'css' ? 'checked' : null" id="CSS" />
+    <label for="CSS">CSS</label>
+    <input type="radio" name="css" value="html" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'html' ? 'checked' : null" id="HTML" />
+    <label for="HTML">HTML</label>
+    <input type="radio" name="css" value="javascript" (change)="setLanguage($event)" [attr.checked] = "example.css.language === 'javascript' ? 'checked' : null" id="JAVASCRIPT" />
+    <label for="JAVASCRIPT">JAVASCRIPT</label>
   </p>
   <textarea rows="7" style="width: 100%; " name="css" (keyup)="update($event)" [innerHTML]="example.css.code"></textarea>
-  <prism-highlight [language]="example.css.language" [code]="example.css.code"></prism-highlight>
+  <prism-highlight [language]="example.css.language" [code]="example.css.code" [callback]="callback"></prism-highlight>
   <prism-highlight [language]="example.css.language">{{example.css.code}}</prism-highlight>
 </div>
 <h4>
