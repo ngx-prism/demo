@@ -8,6 +8,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
   @ViewChild('textarea') textarea: ElementRef;
 
+  async = true;
+
   language = 'css';
   title = 'app';
 
@@ -62,8 +64,8 @@ export class AppComponent {
 
   constructor() { }
 
-  callback = (env) => {
-    console.log('callback', env);
+  callback = () => {
+    console.log('callback');
   }
   update($event) {
     this.example[$event.srcElement.name].code = $event.srcElement.value;
